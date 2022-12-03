@@ -1,34 +1,53 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example.dashboard</groupId>
+  <groupId>xff</groupId>
   <artifactId>paas-dashboard</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>paas-dashboard</name>
   <url>http://maven.apache.org</url>
+
   <build>
     <plugins>
+      <!-- any other plugins -->
       <plugin>
-        <!-- Build an executable JAR -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
           <archive>
             <manifest>
               <mainClass>com.example.dashboard.App</mainClass>
             </manifest>
           </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
         </configuration>
       </plugin>
     </plugins>
   </build>
+
+  
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>2.0.0</version>
+      </dependency>
+
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>libraries-bom</artifactId>
@@ -40,12 +59,6 @@
   </dependencyManagement>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-resourcemanager</artifactId>
@@ -59,7 +72,7 @@
     <dependency>
       <groupId>com.google.api-client</groupId>
       <artifactId>google-api-client</artifactId>
-      <version>1.33.0</version>
+      
     </dependency>
     <dependency>
       <groupId>com.google.cloud</groupId>
@@ -70,14 +83,6 @@
       <groupId>com.google.apis</groupId>
       <artifactId>google-api-services-sqladmin</artifactId>
       <version>v1beta4-rev76-1.25.0</version>
-    </dependency>
-
-
-    <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client-jackson2 -->
-    <dependency>
-      <groupId>com.google.api-client</groupId>
-      <artifactId>google-api-client-jackson2</artifactId>
-      <version>1.20.0</version>
     </dependency>
 
 

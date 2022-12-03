@@ -1,3 +1,3 @@
 FROM openjdk:11
-COPY /target/paas_dashboard.jar  app.jar
+COPY /target/paas-patch-dashboard.jar  app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
