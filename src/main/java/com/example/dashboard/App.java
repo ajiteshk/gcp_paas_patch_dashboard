@@ -67,7 +67,7 @@ public class App {
     private static Map<String, Boolean> regularVersionMap = new HashMap<>();
     private static Map<String, Boolean> stableVersionMap = new HashMap<>();
     private static Properties prop = new Properties();
-    private static String BQ_URL = System.getenv("BQ_URL");
+    private static String BQ_URL = System.getProperty("BQ_URL");
 
     public static void main(String[] args) throws Exception {
         loadProperties();
